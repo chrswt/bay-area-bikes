@@ -32,12 +32,29 @@ var plot = function() {
   var points = svg.selectAll('circle').data(bikeStations)
     .enter().append('circle')
     .attr('r', 5)
-    .style('stroke', 'red')
     .style('opacity', 0.5)
-    .style('fill', 'red')
+    // .style('fill', 'red')
     .attr('whatever', function(d) {
       return d.stationName;
     })
+    .attr('fill', function(d) {
+      if (d.availableBikes < 3) {
+        return 'red';
+      }
+      else if (d.availableBikes < 7) {
+        return 'orange';
+      }
+      else if (d.availableBikes < 10) {
+        return 'yellow';
+      }
+      else {
+        return 'green';
+      }
+    })
+    .attr('r', function(d) {
+      return 5 + (d.availableBikes/3);
+    });
+
 
   points.attr('transform', function(d) {
     return 'translate(' + map.latLngToLayerPoint(d.LatLng).x + ',' +
