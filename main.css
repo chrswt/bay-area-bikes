@@ -45,5 +45,10 @@ div.tooltip {
   border: 0px;
   border-radius: 4px;
   pointer-events: none;
-  z-index: 100;
+}
+
+.location {
+  top: -115px;
+  left: 75%;
+  opacity: 0.8;
 }

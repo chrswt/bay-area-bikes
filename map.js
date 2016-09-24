@@ -23,7 +23,7 @@ map.dragging.disable();
 
 // Pick up SVG from map object
 var svg = d3.select('#map').select('svg');
-var div = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 1);
+var div = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0 );
 var p = d3.select('.tooltip').append('p');
 // var test = svg.append('rect').attr('class', 'tooltip').attr('x', 100).attr('y', 100)
 //             .attr('fill', 'white').attr('height', 100).attr('width', 100).attr('opacity', 0.1);
