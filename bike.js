@@ -17,3 +17,5 @@ $(document).ready(function () {
 $('.refresh').on('click', function () {
   update();
 });
+
+// map.setView(new L.LatLng(37.279518, -121.867905), 14); SAN JOSE SETTINGS

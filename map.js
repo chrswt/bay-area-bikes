@@ -1,4 +1,4 @@
-var map = new L.Map('map', {zoomControl: false}).setView([37.783697, -122.408966], 14);
+var map = new L.Map('map', {zoomControl: false}).setView([37.783697, -122.408966], 9);
 
 var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
   { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>' });
@@ -34,30 +34,23 @@ var plot = function() {
     station.LatLng = new L.LatLng(station.latitude, station.longitude);
   });
 
-  var points = svg.selectAll('circle').data(bikeStations)
-    .enter().append('circle')
+  var points = svg.selectAll('circle').data(bikeStations, function(d) {
+    return d.id;
+  });
+    points.enter().append('circle') // enter update pattern
+    points // new data update pattern
     .attr('r', 5)
     .style('opacity', 0.5)
-    // .style('fill', 'red')
-    .attr('whatever', function(d) {
+    .attr('stationName', function(d) {
       return d.stationName;
     })
     .attr('fill', function(d) {
-      if (d.availableBikes < 3) {
-        return 'red';
-      }
-      else if (d.availableBikes < 7) {
-        return 'orange';
-      }
-      else if (d.availableBikes < 10) {
-        return 'yellow';
-      }
-      else {
-        return 'green';
-      }
+      return d.availableBikes < 3 ? 'red' :
+        d.availableBikes < 7 ? 'orange' :
+        d.availableBikes < 10 ? 'yellow' : 'green';
     })
     .attr('r', function(d) {
-      return 5 + (d.availableBikes/3);
+      return 5 + (d.availableBikes / 3);
     })
     .on('mouseover', function(d) {
       div.transition().duration(200).style('opacity', 0.6)
@@ -68,14 +61,13 @@ var plot = function() {
         + 'Available Docks: ' + d.availableDocks);
     })
     .on('mouseout', function(d) {
-      div.transition().duration(500).style('opacity', 0);
+      div.transition().duration(500).style('opacity', 0)
     });
 
+    points.exit().remove(); // exit update pattern
 
   points.attr('transform', function(d) {
     return 'translate(' + map.latLngToLayerPoint(d.LatLng).x + ',' +
             map.latLngToLayerPoint(d.LatLng).y + ')';
   });
-
-
 };
