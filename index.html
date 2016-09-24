@@ -10,6 +10,10 @@
     rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+
 
   </head>
 
@@ -19,16 +23,17 @@
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo flow-text" id="title">SAN FRANCISCO BIKESHARE</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn">Refresh</a></li>
+          <li><a class="waves-effect waves-light btn refresh">Refresh</a></li>
         </ul>
       </div>
     </nav>
 
     <div id="map"></div>
 
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
-    <script src="map.js"></script>
+      <script src="data.js"></script>
+      <script src="bike.js"></script>
+      <script src="map.js"></script>
+
 
   </body>
 
