@@ -2,7 +2,7 @@ var latestData;
 var bikeStations;
 
 var update = function() {
-  latestData = $.getJSON('http://feeds.bayareabikeshare.com/stations/stations.json');
+  latestData = $.getJSON('https://feeds.bayareabikeshare.com/stations/stations.json');
   setTimeout(function() {
     bikeStations = latestData.responseJSON.stationBeanList;
     plot();
