@@ -3,6 +3,14 @@
   height: 100vh;
 }
 
+body {
+  background-color: hsl(240, 22%, 20%);
+}
+
+.leaflet-container {
+  background-color: hsl(240, 22%, 20%);
+}
+
 .leaflet-control-zoom {
   visibility: hidden;
 }
