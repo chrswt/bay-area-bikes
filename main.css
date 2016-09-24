@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: hsl(240, 22%, 20%);
+  background-color: #242424;
 }
 
 .leaflet-container {
@@ -13,4 +13,18 @@ body {
 
 .leaflet-control-zoom {
   visibility: hidden;
+}
+
+nav .nav-wrapper {
+  background-color: rgb(56, 56, 56);
+}
+
+nav.brand-logo {
+  color: rgba(235,235,235,0.8);
+  margin-left: 12px;
+}
+
+#title {
+  padding-left: 20px;
+  font-family: 'Arapey', serif;
 }
