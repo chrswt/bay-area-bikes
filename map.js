@@ -23,6 +23,11 @@ map.dragging.disable();
 
 // Pick up SVG from map object
 var svg = d3.select('#map').select('svg');
+var div = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 1);
+var p = d3.select('.tooltip').append('p');
+// var test = svg.append('rect').attr('class', 'tooltip').attr('x', 100).attr('y', 100)
+//             .attr('fill', 'white').attr('height', 100).attr('width', 100).attr('opacity', 0.1);
+
 
 var plot = function() {
   bikeStations.forEach(function(station) {
@@ -53,6 +58,17 @@ var plot = function() {
     })
     .attr('r', function(d) {
       return 5 + (d.availableBikes/3);
+    })
+    .on('mouseover', function(d) {
+      div.transition().duration(200).style('opacity', 0.6)
+      .style('left', (d3.event.pageX) + 'px')
+      .style('top', (d3.event.pageY - 28) + 'px')
+      p.html('<b>' + d.stationName + '</b>' + '<br>' +
+       'Available Bikes: ' + d.availableBikes + '<br>'
+        + 'Available Docks: ' + d.availableDocks);
+    })
+    .on('mouseout', function(d) {
+      div.transition().duration(500).style('opacity', 0);
     });
 
 
@@ -60,4 +76,6 @@ var plot = function() {
     return 'translate(' + map.latLngToLayerPoint(d.LatLng).x + ',' +
             map.latLngToLayerPoint(d.LatLng).y + ')';
   });
+
+
 };
