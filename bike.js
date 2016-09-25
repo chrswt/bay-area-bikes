@@ -6,6 +6,7 @@ var update = function() {
   setTimeout(function() {
     bikeStations = latestData.responseJSON.stationBeanList;
     plot();
+    $('.update').text('Last updated: ' + latestData.responseJSON.executionTime);
   }, 1000);
 };
 

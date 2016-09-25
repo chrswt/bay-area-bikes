@@ -49,8 +49,15 @@ div.tooltip {
 
 .location {
   top: -115px;
-  /*left: 75%;*/
   float: right;
   margin-right: 7px;
   opacity: 0.8;
+}
+
+.update {
+  font-family: 'Arapey' serif;
+  color: rgba(235,235,235,0.5);
+  position: absolute;
+  top: 92%;
+  left: 85%;
 }
