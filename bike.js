@@ -11,7 +11,7 @@ var update = function() {
     bikeStations = latestData.stationBeanList;
     plot();
     // $('.update').text('Last updated: ' + latestData.responseJSON.executionTime);
-  }, 1000);
+  }, 400);
 };
 
 var retrieveSF = function() {
