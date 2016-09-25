@@ -2,9 +2,13 @@ var latestData;
 var bikeStations;
 
 var update = function() {
-  latestData = $.getJSON('http://feeds.bayareabikeshare.com/stations/stations.json');
+  $.getJSON('http://whateverorigin.org/get?url=' +
+  encodeURIComponent('http://feeds.bayareabikeshare.com/stations/stations.json') + '&callback=?', function(data) {
+  latestData = data.contents;
+});
+
   setTimeout(function() {
-    bikeStations = latestData.responseJSON.stationBeanList;
+    bikeStations = latestData.stationBeanList;
     plot();
     // $('.update').text('Last updated: ' + latestData.responseJSON.executionTime);
   }, 1000);
@@ -38,4 +42,3 @@ $(document).ready(function () {
 $('.refresh').on('click', function () {
   update();
 });
-
